@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html language="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>訂單</title>
+</head>
+<body>
+這是訂單頁面
+<div class="list-content">
+	<div class="list-item" th:each="order : ${orderList}" th:object="${order}">
+    	<span th:text="|總額: *{orderMoney}|"></span><br>
+    	<span th:text="|訂單狀態: *{orderStatus}|">	</span><br>
+    	<a th:href="@{|/orderItems/*{id}|}">訂單詳情</a>
+    </div>
+</div>
+</body>
+</html>

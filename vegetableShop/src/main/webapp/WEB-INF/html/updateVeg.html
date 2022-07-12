@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html language="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>蔬菜</title>
+</head>
+<body>
+這是蔬菜頁面
+<form th:action="@{/vegetable}" method="post">
+	<input type="hidden" name="id" th:value="${vegetable.id}">
+	<input type="hidden" name="_method" value="put">
+	蔬菜名稱: <input type="text" name="vegName" th:value="${vegetable.vegName}"><br>
+	單價: <input type="text" name="price" th:value="${vegetable.price}"><br>
+	銷量: <input type="text" name="saleCount" th:value="${vegetable.saleCount}"><br>
+	庫存: <input type="text" name="totalCount" th:value="${vegetable.totalCount}"><br>
+	種類: <input type="text" name="type" th:value="${vegetable.type}"><br>
+	<input type="submit" value="更改蔬菜">
+</form>
+
+
+</body>
+</html>

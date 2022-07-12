@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html language="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>蔬菜</title>
+</head>
+<body>
+這是蔬菜頁面
+<form th:action="@{/vegetable}" method="post">
+	蔬菜名稱: <input type="text" name="vegName"><br>
+	單價: <input type="text" name="price"><br>
+	銷量: <input type="text" name="saleCount"><br>
+	庫存: <input type="text" name="totalCount"><br>
+	種類: <input type="text" name="type"><br>
+	<input type="submit" value="新增蔬菜">
+</form>
+
+
+</body>
+</html>

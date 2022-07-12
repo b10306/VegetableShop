@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html language="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>首頁</title>
+</head>
+<body>
+<form th:action="@{/login}" method="get">
+	使用者名稱: <input type="text" name="userName"><br>
+	密碼: <input type="text" name="pwd"><br>
+	<p th:text="${info}"></p>
+	<input type="submit" value="登入" ><br>
+</form>
+<a th:href="@{/register}">註冊帳號</a>
+
+
+</body>
+</html>

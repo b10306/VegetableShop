@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html language="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>首頁</title>
+	<script>
+		window.onload = function(){
+			const role = document.getElementById('role');
+			const add = document.getElementById('add');
+			const update = document.getElementsByClassName('update')
+			if(role.value == 1){
+				add.style.visibility = "visible";
+				for(let i = 0; i < update.length; i++){
+					update[i].style.visibility = "visible";	
+				}
+			}else{
+				add.style.visibility = "hidden";
+				for(let i = 0; i < update.length; i++){
+					update[i].style.visibility = "hidden";	
+				}
+			}	
+		}
+</script>
+</head>
+<body>
+這是商城首頁
+<div class="list-content">
+	<div class="list-item" th:each="veg : ${vegList}" th:object="${veg}">
+    	<form th:action="@{/cart}" method="post" th:name="|form*{id}|">
+        	<input type="hidden" name="vid" th:value="*{id}">
+        	<input type="hidden" name="totalCount" th:value="*{totalCount}">
+            <p th:text="|菜名: *{vegName}|"></p>
+            <p th:text="|價格: *{price}|"></p>
+          	<p th:text="|銷量: *{saleCount}|"></p>
+           	<p th:text="|庫存: *{totalCount}|"></p>
+         	<p th:text="|種類: *{type}|"></p>
+         	<ul class="btn-numbox">
+	            <li><span class="number">數量</span></li>
+	            <li>
+	                <ul class="count">
+	                    <li><span id="num-jian" class="num-jian" th:onclick="|minus(*{id})|">-</span></li>
+	                    <li><input type="text" class="input-num" id="inputNum" value="0" name="buyCount"/></li>
+	                    <li><span id="num-jia" class="num-jia" th:onclick="|add(*{id})|">+</span></li>
+	                </ul>
+	            </li>
+	            <li><span class="kucun">（庫存:54）</span></li>
+	　　　  </ul>
+			<script th:src="@{static/js/buyCountButton.js}"></script>
+          	<input type="submit" name="operate" value="加入購物車">
+          	<a th:href="@{|vegetable/*{id}|}" class="update">更改蔬菜</a>
+        </form>
+    </div>
+</div>
+<a th:href="@{/cart}">購物車</a>
+<a th:href="@{/order}">我的訂單</a>
+<a th:href="@{/addVeg}" id="add">新增蔬菜</a>
+<input type="hidden" id="role" th:value="${session.role}">
+</body>
+</html>

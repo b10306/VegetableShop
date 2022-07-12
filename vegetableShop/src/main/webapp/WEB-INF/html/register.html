@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html language="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>帳號註冊</title>
+	<script th:src="@{static/js/register.js}"></script>
+</head>
+<body>
+<form th:action="@{/customer}" name="form" method="post">
+	使用者名稱: <input type="text" name="uname" id="uname" onblur="isUserExist(this.value, isUserRepeat)">
+	<p id="hint"></p><br>
+	密碼: <input type="text" name="pwd" id="pwd"><br>
+	<input type="button" value="提交" onclick="submitForm()">
+</form>
+
+
+</body>
+</html>
